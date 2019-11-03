@@ -1,7 +1,7 @@
 # Stardew Valley Tools
 
-This provides a Go library and command line interface for modifying Stardew
-Valley save files.
+This is a _work in progress_ to provide a Go library and command line interface for
+modifying Stardew Valley save files.
 
 ## How to build
 
