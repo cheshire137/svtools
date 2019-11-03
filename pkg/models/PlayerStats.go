@@ -28,31 +28,32 @@ type PlayerStats struct {
 	BouldersCracked        int      `xml:"bouldersCracked"`
 	StumpsChopped          int      `xml:"stumpsChopped"`
 	StepsTaken             int      `xml:"stepsTaken"`
-	MonstersKilled         int      `xml:"monstersKilled"`
-	DiamondsFound          int      `xml:"diamondsFound"`
-	PrismaticShardsFound   int      `xml:"prismaticShardsFound"`
-	OtherPreciousGemsFound int      `xml:"otherPreciousGemsFound"`
-	CaveCarrotsFound       int      `xml:"caveCarrotsFound"`
-	CopperFound            int      `xml:"copperFound"`
-	IronFound              int      `xml:"ironFound"`
-	CoalFound              int      `xml:"coalFound"`
-	CoinsFound             int      `xml:"coinsFound"`
-	GoldFound              int      `xml:"goldFound"`
-	IridiumFound           int      `xml:"iridiumFound"`
-	BarsSmelted            int      `xml:"barsSmelted"`
-	BeveragesMade          int      `xml:"beveragesMade"`
-	PreservesMade          int      `xml:"preservesMade"`
-	PiecesOfTrashRecycled  int      `xml:"piecesOfTrashRecycled"`
-	MysticStonesCrushed    int      `xml:"mysticStonesCrushed"`
-	DaysPlayed             int      `xml:"daysPlayed"`
-	WeedsEliminated        int      `xml:"weedsEliminated"`
-	SticksChopped          int      `xml:"sticksChopped"`
-	NotesFound             int      `xml:"notesFound"`
-	QuestsCompleted        int      `xml:"questsCompleted"`
-	StarLevelCropsShipped  int      `xml:"starLevelCropsShipped"`
-	CropsShipped           int      `xml:"cropsShipped"`
-	ItemsForaged           int      `xml:"itemsForaged"`
-	SlimesKilled           int      `xml:"slimesKilled"`
-	GeodesCracked          int      `xml:"geodesCracked"`
-	GoodFriends            int      `xml:"goodFriends"`
+	TotalMonstersKilled    int      `xml:"monstersKilled"`
+	MonstersKilled         SpecificMonstersKilled
+	DiamondsFound          int `xml:"diamondsFound"`
+	PrismaticShardsFound   int `xml:"prismaticShardsFound"`
+	OtherPreciousGemsFound int `xml:"otherPreciousGemsFound"`
+	CaveCarrotsFound       int `xml:"caveCarrotsFound"`
+	CopperFound            int `xml:"copperFound"`
+	IronFound              int `xml:"ironFound"`
+	CoalFound              int `xml:"coalFound"`
+	CoinsFound             int `xml:"coinsFound"`
+	GoldFound              int `xml:"goldFound"`
+	IridiumFound           int `xml:"iridiumFound"`
+	BarsSmelted            int `xml:"barsSmelted"`
+	BeveragesMade          int `xml:"beveragesMade"`
+	PreservesMade          int `xml:"preservesMade"`
+	PiecesOfTrashRecycled  int `xml:"piecesOfTrashRecycled"`
+	MysticStonesCrushed    int `xml:"mysticStonesCrushed"`
+	DaysPlayed             int `xml:"daysPlayed"`
+	WeedsEliminated        int `xml:"weedsEliminated"`
+	SticksChopped          int `xml:"sticksChopped"`
+	NotesFound             int `xml:"notesFound"`
+	QuestsCompleted        int `xml:"questsCompleted"`
+	StarLevelCropsShipped  int `xml:"starLevelCropsShipped"`
+	CropsShipped           int `xml:"cropsShipped"`
+	ItemsForaged           int `xml:"itemsForaged"`
+	SlimesKilled           int `xml:"slimesKilled"`
+	GeodesCracked          int `xml:"geodesCracked"`
+	GoodFriends            int `xml:"goodFriends"`
 }
