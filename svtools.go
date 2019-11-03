@@ -19,8 +19,7 @@ func main() {
 	saveFile := xml.SaveFile{Path: os.Args[1]}
 	err := saveFile.Load()
 	if err != nil {
-		fmt.Println("failed to open save file")
-		fmt.Println(err)
+		fmt.Println("failed to open save file: " + err.Error())
 		os.Exit(1)
 		return
 	}
