@@ -1,5 +1,7 @@
 package models
 
-type Options struct {
+import "encoding/xml"
 
+type Options struct {
+	XMLName xml.Name `xml:"options"`
 }

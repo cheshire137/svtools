@@ -1,6 +1,9 @@
 package models
 
+import "encoding/xml"
+
 type SaveGame struct {
+	XMLName                xml.Name `xml:"SaveGame"`
 	Player                 Player
 	Locations              []Location
 	CurrentSeason          string
@@ -13,7 +16,7 @@ type SaveGame struct {
 	CurrentWallpaper       int
 	CurrentFloor           int
 	CurrentSongIndex       int
-	IncubatingEgg          IncubatingEgg
+	IncubatingEgg          Position
 	ChanceToRainTomorrow   float32
 	DailyLuck              float32
 	ID                     int64 `xml:"uniqueIDForThisGame"`
@@ -36,8 +39,4 @@ type SaveGame struct {
 	MinecartHighScore      int
 	WeatherForTomorrow     int
 	FarmType               int `xml:"whichFarm"`
-}
-
-func NewSaveGame() *SaveGame {
-	return &SaveGame{}
 }

@@ -1,6 +1,6 @@
 package models
 
-type IncubatingEgg struct {
+type Position struct {
 	X int
 	Y int
 }

@@ -1,5 +1,7 @@
 package models
 
-type DishOfTheDay struct {
+import "encoding/xml"
 
+type DishOfTheDay struct {
+	XMLName xml.Name `xml:"dishOfTheDay"`
 }
