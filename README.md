@@ -10,4 +10,7 @@ This was built using Go 1.13.
 ```sh
 make
 bin/svtools path_to_your_stardew_valley_save_file
+
+# Example:
+# make && bin/svtools samples/Sarah_116989742
 ```
