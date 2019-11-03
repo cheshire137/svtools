@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 	"os"
+
+	"github.com/cheshire137/svtools/pkg/xml"
 )
 
 func main() {
@@ -14,6 +16,12 @@ func main() {
 		return
 	}
 
-	saveFilePath := os.Args[1]
-	fmt.Println(saveFilePath)
+	saveFile := xml.SaveFile{Path: os.Args[1]}
+	err := saveFile.Load()
+	if err != nil {
+		fmt.Println("failed to open save file")
+		fmt.Println(err)
+		os.Exit(1)
+		return
+	}
 }
