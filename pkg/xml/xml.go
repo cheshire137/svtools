@@ -1,15 +1,19 @@
 package xml
 
 import (
+	"encoding/xml"
 	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
+
+	"github.com/cheshire137/svtools/pkg/models"
 )
 
 // SaveFile represents a Stardew Valley save file.
 type SaveFile struct {
 	Path string
+	Data *models.SaveGame
 }
 
 // Load opens a save file for editing.
@@ -31,5 +35,11 @@ func (save *SaveFile) Load() error {
 	if err != nil {
 		return err
 	}
+	var saveGame models.SaveGame
+	err = xml.Unmarshal(bytes, &saveGame)
+	if err != nil {
+		return err
+	}
+	save.Data = &saveGame
 	return nil
 }

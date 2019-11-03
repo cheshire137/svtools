@@ -23,4 +23,6 @@ func main() {
 		os.Exit(1)
 		return
 	}
+
+	fmt.Println(saveFile.Data)
 }
