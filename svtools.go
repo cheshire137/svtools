@@ -24,5 +24,6 @@ func main() {
 		return
 	}
 
+	fmt.Println("read save file for character: " + saveFile.Data.Player.Name)
 	fmt.Println(saveFile.Data)
 }

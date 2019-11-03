@@ -17,20 +17,20 @@ type SaveFile struct {
 }
 
 // Load opens a save file for editing.
-func (save *SaveFile) Load() error {
-	info, err := os.Stat(save.Path)
+func (s *SaveFile) Load() error {
+	info, err := os.Stat(s.Path)
 	if err != nil {
 		return err
 	}
 	if info.IsDir() {
-		return errors.New(save.Path + " is a directory")
+		return errors.New(s.Path + " is a directory")
 	}
-	xmlFile, err := os.Open(save.Path)
+	xmlFile, err := os.Open(s.Path)
 	if err != nil {
 		return err
 	}
 	defer xmlFile.Close()
-	fmt.Println("opened", save.Path)
+	fmt.Println("opened", s.Path)
 	bytes, err := ioutil.ReadAll(xmlFile)
 	if err != nil {
 		return err
@@ -40,6 +40,6 @@ func (save *SaveFile) Load() error {
 	if err != nil {
 		return err
 	}
-	save.Data = &saveGame
+	s.Data = &saveGame
 	return nil
 }
