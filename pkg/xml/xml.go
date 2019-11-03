@@ -3,6 +3,7 @@ package xml
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"os"
 )
 
@@ -26,6 +27,9 @@ func (save *SaveFile) Load() error {
 	}
 	defer xmlFile.Close()
 	fmt.Println("opened", save.Path)
-
+	bytes, err := ioutil.ReadAll(xmlFile)
+	if err != nil {
+		return err
+	}
 	return nil
 }
