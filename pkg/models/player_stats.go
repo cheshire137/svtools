@@ -31,6 +31,7 @@ type PlayerStats struct {
 	StumpsChopped          int      `xml:"stumpsChopped"`
 	StepsTaken             int      `xml:"stepsTaken"`
 	TotalMonstersKilled    int      `xml:"monstersKilled"`
+	TotalMonstersKilled2   int      `xml:"MonstersKilled"`
 	MonstersKilled         SpecificMonstersKilled
 	DiamondsFound          int `xml:"diamondsFound"`
 	PrismaticShardsFound   int `xml:"prismaticShardsFound"`
