@@ -11,9 +11,11 @@ type PlayerItems struct {
 }
 
 func (items *PlayerItems) String() string {
-	var sb strings.Builder
+	itemStrings := []string{}
 	for _, item := range items.Items {
-		sb.WriteString(item.String())
+		if !item.IsNil {
+			itemStrings = append(itemStrings, item.String())
+		}
 	}
-	return sb.String()
+	return strings.Join(itemStrings, ", ")
 }

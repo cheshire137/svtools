@@ -3,6 +3,7 @@ package models
 import (
 	"encoding/xml"
 	"fmt"
+	"strings"
 )
 
 type Player struct {
@@ -84,5 +85,9 @@ type Player struct {
 }
 
 func (p *Player) String() string {
-	return fmt.Sprintf("%s - %s Farm", p.Name, p.FarmName)
+	var sb strings.Builder
+	sb.WriteString(fmt.Sprintf("%s, %s Farm\n", p.Name, p.FarmName))
+	sb.WriteString("  - ")
+	sb.WriteString(p.Items.String())
+	return sb.String()
 }
