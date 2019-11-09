@@ -10,9 +10,19 @@ type PlayerItems struct {
 	Items   []PlayerItem `xml:"Item"`
 }
 
-func (items *PlayerItems) String() string {
+func (pi *PlayerItems) Total() int {
+	total := 0
+	for _, item := range pi.Items {
+		if !item.IsNil {
+			total = total + 1
+		}
+	}
+	return total
+}
+
+func (pi *PlayerItems) String() string {
 	itemStrings := []string{}
-	for _, item := range items.Items {
+	for _, item := range pi.Items {
 		if !item.IsNil {
 			itemStrings = append(itemStrings, item.String())
 		}
