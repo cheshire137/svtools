@@ -31,7 +31,7 @@ type Player struct {
 	Speed                       int         `xml:"speed"`
 	FacingDirection             int         `xml:"facingDirection"`
 	Scale                       int         `xml:"scale"`
-	Professions                 []int       `xml:"professions"`
+	Professions                 Professions `xml:"professions"`
 	ExperiencePoints            []int       `xml:"experiencePoints"`
 	DialogueQuestionsAnswered   []int       `xml:"dialogueQuestionsAnswered"`
 	EventsSeen                  []int       `xml:"eventsSeen"`
@@ -97,5 +97,7 @@ func (p *Player) String() string {
 		p.PantsColor.String(), p.Shoes, p.Accessory))
 	sb.WriteString("\n\nStats:\n  ")
 	sb.WriteString(p.Stats.String())
+	sb.WriteString("\n\nProfessions:\n  ")
+	sb.WriteString(p.Professions.String())
 	return sb.String()
 }
