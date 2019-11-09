@@ -7,7 +7,7 @@ import (
 
 type PlayerItem struct {
 	XMLName                 xml.Name `xml:"Item"`
-	Type                    string   `xml:"xsi:type,attr"`
+	Type                    string   `xml:"http://www.w3.org/2001/XMLSchema-instance type,attr"`
 	Category                int      `xml:"category"`
 	Name                    string   `xml:"name"`
 	SpecificName            string   `xml:"Name"`
