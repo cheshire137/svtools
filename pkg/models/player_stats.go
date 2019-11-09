@@ -22,10 +22,12 @@ type PlayerStats struct {
 	DirtHoed               int      `xml:"dirtHoed"`
 	GiftsGiven             int      `xml:"giftsGiven"`
 	TimesUnconscious       int      `xml:"timesUnconscious"`
+	TimesUnconscious2      int      `xml:"TimesUnconscious"`
 	AverageBedtime         int      `xml:"averageBedtime"`
 	TimesFished            int      `xml:"timesFished"`
 	FishCaught             int      `xml:"fishCaught"`
 	BouldersCracked        int      `xml:"bouldersCracked"`
+	BouldersCracked2       int      `xml:"BouldersCracked"`
 	StumpsChopped          int      `xml:"stumpsChopped"`
 	StepsTaken             int      `xml:"stepsTaken"`
 	TotalMonstersKilled    int      `xml:"monstersKilled"`
