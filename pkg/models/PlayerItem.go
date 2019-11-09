@@ -1,6 +1,9 @@
 package models
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"fmt"
+)
 
 type PlayerItem struct {
 	XMLName                 xml.Name `xml:"Item"`
@@ -27,4 +30,8 @@ type PlayerItem struct {
 	NumAttachmentSlots      int      `xml:"numAttachmentSlots"`
 	WaterCanMax             int      `xml:"waterCanMax"`
 	WaterLeft               int      `xml:"WaterLeft"`
+}
+
+func (i *PlayerItem) String() string {
+	return fmt.Sprintf("%s (%s)", i.Name, i.Type)
 }

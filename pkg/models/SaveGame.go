@@ -40,3 +40,7 @@ type SaveGame struct {
 	LowestMineLevelReached int `xml:"mine_lowestLevelReached"`
 	FarmType               int `xml:"whichFarm"`
 }
+
+func (s *SaveGame) String() string {
+	return s.Player.String()
+}

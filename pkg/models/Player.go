@@ -1,6 +1,9 @@
 package models
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"fmt"
+)
 
 type Player struct {
 	XMLName                     xml.Name    `xml:"player"`
@@ -78,4 +81,8 @@ type Player struct {
 	PantsColor                  Color
 	EyeColor                    Color `xml:"newEyeColor"`
 	ID                          int64 `xml:"UniqueMultiplayerID"`
+}
+
+func (p *Player) String() string {
+	return fmt.Sprintf("%s - %s Farm", p.Name, p.FarmName)
 }
