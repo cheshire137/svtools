@@ -2,12 +2,12 @@ package models
 
 import (
 	"encoding/xml"
-	"fmt"
 )
 
 type PlayerItem struct {
 	XMLName                 xml.Name `xml:"Item"`
 	Type                    string   `xml:"http://www.w3.org/2001/XMLSchema-instance type,attr"`
+	IsNil                   bool     `xml:"http://www.w3.org/2001/XMLSchema-instance nil,attr"`
 	Category                int      `xml:"category"`
 	Name                    string   `xml:"name"`
 	SpecificName            string   `xml:"Name"`
@@ -33,5 +33,8 @@ type PlayerItem struct {
 }
 
 func (i *PlayerItem) String() string {
-	return fmt.Sprintf("%s (%s)", i.Name, i.Type)
+	if i.DisplayName != "" {
+		return i.DisplayName
+	}
+	return i.Name
 }

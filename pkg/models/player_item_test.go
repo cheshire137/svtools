@@ -14,6 +14,7 @@ func TestPlayerItem(t *testing.T) {
 	err := xml.Unmarshal([]byte(xmlPlayerItem), &item)
 
 	require.NoError(t, err)
+	require.False(t, item.IsNil)
 	require.Equal(t, "FishingRod", item.Type)
 	require.Equal(t, -99, item.Category)
 	require.Equal(t, "Fishing Rod", item.Name)
