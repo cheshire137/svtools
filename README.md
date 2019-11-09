@@ -14,3 +14,9 @@ bin/svtools path_to_your_stardew_valley_save_file
 # Example:
 # make && bin/svtools samples/Sarah_116989742
 ```
+
+## How to test
+
+```sh
+make test
+```
