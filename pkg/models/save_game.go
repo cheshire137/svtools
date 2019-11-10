@@ -9,7 +9,7 @@ import (
 type SaveGame struct {
 	XMLName                xml.Name `xml:"SaveGame"`
 	Player                 Player
-	Locations              []Location
+	Locations              []GameLocation
 	CurrentSeason          string `xml:"currentSeason"`
 	SamBandName            string `xml:"samBandName"`
 	ElliottBookName        string `xml:"elliottBookName"`
