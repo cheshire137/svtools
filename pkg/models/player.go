@@ -86,8 +86,11 @@ type Player struct {
 
 func (p *Player) String() string {
 	var sb strings.Builder
-	sb.WriteString(fmt.Sprintf("%s, %s Farm\n\n", p.Name, p.FarmName))
-	sb.WriteString("Inventory:\n  ")
+	sb.WriteString(fmt.Sprintf("%s, %s Farm", p.Name, p.FarmName))
+	sb.WriteString("\n\nSkills:\n  ")
+	sb.WriteString(fmt.Sprintf("Farming: %d / Mining: %d / Combat: %d / Foraging: %d / Fishing: %d",
+		p.FarmingLevel, p.MiningLevel, p.CombatLevel, p.ForagingLevel, p.FishingLevel))
+	sb.WriteString("\n\nInventory:\n  ")
 	sb.WriteString(p.Inventory.String())
 	sb.WriteString("\n\nAppearance:\n")
 	sb.WriteString(fmt.Sprintf("  hair #%d %s, skin #%d, facial hair #%d, eyes %s", p.Hair,
