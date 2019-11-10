@@ -1,6 +1,10 @@
 package models
 
-import "encoding/xml"
+import (
+	"encoding/xml"
+	"fmt"
+	"strings"
+)
 
 type SaveGame struct {
 	XMLName                xml.Name `xml:"SaveGame"`
@@ -42,5 +46,15 @@ type SaveGame struct {
 }
 
 func (s *SaveGame) String() string {
-	return s.Player.String()
+	var sb strings.Builder
+	sb.WriteString(s.Player.String())
+	sb.WriteString("\n\nTime:\n  ")
+	sb.WriteString(fmt.Sprintf("%s day %d, year %d", s.CurrentSeason, s.DayOfMonth, s.Year))
+	sb.WriteString("\n\nWeather:\n  ")
+	sb.WriteString(fmt.Sprintf("Raining? %v / Snowing? %v / Lightning? %v", s.IsRaining, s.IsSnowing,
+		s.IsLightning))
+	sb.WriteString("\n\nTownspeople:\n  ")
+	sb.WriteString(fmt.Sprintf("Sam's band: %s / Elliott's book: %s", s.SamBandName,
+		s.ElliottBookName))
+	return sb.String()
 }
