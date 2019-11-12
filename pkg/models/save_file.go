@@ -63,5 +63,13 @@ func (s *SaveFile) Save(path string, indent bool) error {
 	if err != nil {
 		return err
 	}
-	return ioutil.WriteFile(path, bytes, 0644)
+	file, err := os.Create(path)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+	file.WriteString(xml.Header)
+	file.Write(bytes)
+	file.Sync()
+	return nil
 }
