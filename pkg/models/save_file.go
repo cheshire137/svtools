@@ -19,14 +19,24 @@ func NewSaveFile(path string) *SaveFile {
 	return &SaveFile{Path: path}
 }
 
+// Read reads a save file as an XML string.
+func (s *SaveFile) Read() (string, error) {
+	err := s.isPathValid()
+	if err != nil {
+		return "", err
+	}
+	bytes, err := ioutil.ReadFile(s.Path)
+	if err != nil {
+		return "", err
+	}
+	return string(bytes), nil
+}
+
 // Load opens a save file for editing.
 func (s *SaveFile) Load() error {
-	info, err := os.Stat(s.Path)
+	err := s.isPathValid()
 	if err != nil {
 		return err
-	}
-	if info.IsDir() {
-		return errors.New(s.Path + " is a directory")
 	}
 	xmlFile, err := os.Open(s.Path)
 	if err != nil {
@@ -71,5 +81,16 @@ func (s *SaveFile) Save(path string, indent bool) error {
 	file.WriteString(xml.Header)
 	file.Write(bytes)
 	file.Sync()
+	return nil
+}
+
+func (s *SaveFile) isPathValid() error {
+	info, err := os.Stat(s.Path)
+	if err != nil {
+		return err
+	}
+	if info.IsDir() {
+		return errors.New(s.Path + " is a directory")
+	}
 	return nil
 }
