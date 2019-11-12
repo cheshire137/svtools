@@ -49,11 +49,12 @@ func (s *SaveFile) Load() error {
 
 // ToXML returns a byte array of the save file as XML.
 func (s *SaveFile) ToXML(indent bool) ([]byte, error) {
+	saveData := s.Data
 	if indent {
 		prefix := ""
-		return xml.MarshalIndent(s, prefix, "  ")
+		return xml.MarshalIndent(saveData, prefix, "  ")
 	}
-	return xml.Marshal(s)
+	return xml.Marshal(saveData)
 }
 
 // Save the save file to the specified path as an XML file.
