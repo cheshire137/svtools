@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 
@@ -8,15 +9,22 @@ import (
 )
 
 func main() {
-	if len(os.Args) < 2 {
-		fmt.Printf("%s path_to_save_file\n\n", os.Args[0])
-		fmt.Println("Example:")
-		fmt.Printf("\t%s /Users/yourMacUser/.config/StardewValley/Saves/YourStardewCharacter_116989742/YourStardewCharacter_116989742\n", os.Args[0])
-		os.Exit(1)
+	var inPath string
+	flag.StringVar(&inPath, "in", "",
+		"Path to a Stardew Valley save file, e.g, /Users/yourMacUser/.config/StardewValley/Saves/YourStardewCharacter_116989742/YourStardewCharacter_116989742")
+
+	var outPath string
+	flag.StringVar(&outPath, "out", "",
+		"Path to where a duplicate of the specified save file should be made")
+
+	flag.Parse()
+	if len(inPath) < 1 {
+		flag.PrintDefaults()
+		os.Exit(0)
 		return
 	}
 
-	saveFile := xml.SaveFile{Path: os.Args[1]}
+	saveFile := xml.SaveFile{Path: inPath}
 	err := saveFile.Load()
 	if err != nil {
 		fmt.Println("failed to open save file: " + err.Error())
@@ -25,4 +33,14 @@ func main() {
 	}
 
 	fmt.Println(saveFile.Data)
+
+	if len(outPath) > 0 {
+		err := saveFile.Save(outPath)
+		if err != nil {
+			fmt.Println("failed to copy save file: " + err.Error())
+			os.Exit(1)
+			return
+		}
+		fmt.Println("\n\nsaved copy of save file to " + outPath)
+	}
 }

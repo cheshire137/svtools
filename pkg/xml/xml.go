@@ -43,3 +43,13 @@ func (s *SaveFile) Load() error {
 	s.Data = &saveGame
 	return nil
 }
+
+func (s *SaveFile) Save(path string) error {
+	prefix := ""
+	indent := "  "
+	bytes, err := xml.MarshalIndent(s, prefix, indent)
+	if err != nil {
+		return err
+	}
+	return ioutil.WriteFile(path, bytes, 0644)
+}
