@@ -1,4 +1,4 @@
-package xml
+package models
 
 import (
 	"encoding/xml"
@@ -6,14 +6,17 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-
-	"github.com/cheshire137/svtools/pkg/models"
 )
 
 // SaveFile represents a Stardew Valley save file.
 type SaveFile struct {
 	Path string
-	Data *models.SaveGame
+	Data *SaveGame
+}
+
+// NewSaveFile returns a SaveFile for the Stardew Valley save at the given file path.
+func NewSaveFile(path string) *SaveFile {
+	return &SaveFile{Path: path}
 }
 
 // Load opens a save file for editing.
@@ -35,7 +38,7 @@ func (s *SaveFile) Load() error {
 	if err != nil {
 		return err
 	}
-	var saveGame models.SaveGame
+	var saveGame SaveGame
 	err = xml.Unmarshal(bytes, &saveGame)
 	if err != nil {
 		return err
@@ -44,10 +47,18 @@ func (s *SaveFile) Load() error {
 	return nil
 }
 
-func (s *SaveFile) Save(path string) error {
-	prefix := ""
-	indent := "  "
-	bytes, err := xml.MarshalIndent(s, prefix, indent)
+// ToXML returns a byte array of the save file as XML.
+func (s *SaveFile) ToXML(indent bool) ([]byte, error) {
+	if indent {
+		prefix := ""
+		return xml.MarshalIndent(s, prefix, "  ")
+	}
+	return xml.Marshal(s)
+}
+
+// Save the save file to the specified path as an XML file.
+func (s *SaveFile) Save(path string, indent bool) error {
+	bytes, err := s.ToXML(indent)
 	if err != nil {
 		return err
 	}

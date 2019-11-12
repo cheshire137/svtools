@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/cheshire137/svtools/pkg/xml"
+	"github.com/cheshire137/svtools/pkg/models"
 )
 
 func main() {
@@ -24,7 +24,7 @@ func main() {
 		return
 	}
 
-	saveFile := xml.SaveFile{Path: inPath}
+	saveFile := models.NewSaveFile(inPath)
 	err := saveFile.Load()
 	if err != nil {
 		fmt.Println("failed to open save file: " + err.Error())
@@ -35,7 +35,7 @@ func main() {
 	fmt.Println(saveFile.Data)
 
 	if len(outPath) > 0 {
-		err := saveFile.Save(outPath)
+		err := saveFile.Save(outPath, true)
 		if err != nil {
 			fmt.Println("failed to copy save file: " + err.Error())
 			os.Exit(1)
